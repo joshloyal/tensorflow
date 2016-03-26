@@ -1460,3 +1460,17 @@ filegroup(
     ),
     visibility = ["//tensorflow:__subpackages__"],
 )
+
+cc_binary(
+    name = "zero_out.so",
+    srcs = ["zero_out.cc"],
+    linkopts = [
+        "-Wl,-Bsymbolic",
+        "-lm",
+    ],
+    linkshared = 1,
+    linkstatic = 1,
+    deps = [
+        "//third_party/tensorflow/core:framework",
+    ],
+)
